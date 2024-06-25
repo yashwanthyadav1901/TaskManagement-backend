@@ -14,13 +14,12 @@ const getAllNotes = async (req, res) => {
   const notesWithUser = await Promise.all(
     notes.map(async (note) => {
       const user = await User.findById(note.user).lean().exec();
-      return { ...note, username: User.username };
+      return { ...note, username: user.username };
     })
   );
 
   // Send the notes with username added to each note
   res.json(notesWithUser);
-  console.log(notesWithUser);
 };
 
 const createNewNote = async (req, res) => {
