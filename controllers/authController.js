@@ -23,7 +23,7 @@ const register = async (req, res) => {
     const newUser = await User.create({
       username,
       password: hashedPwd,
-      roles: ["Admin"], // default role
+      roles: ["Employee"], // default role
     });
 
     // Generate tokens
